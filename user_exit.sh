@@ -78,7 +78,7 @@ EOF
 fi
 
 ## Define the path to the local HTML file
-HTML_FILE_PATH="$USER_HOME/cli-helper-2622.html"
+HTML_FILE_PATH="$USER_HOME/cli-helper-1844.html"
 
 ## Convert the file path to a URL format
 FILE_URL="file://$HTML_FILE_PATH"
@@ -109,7 +109,7 @@ ssh ceph-node${SERVER} "systemctl unmask rpcbind.socket ; systemctl unmask rpcbi
 done
 
 ## Copy Ceph admin keys to the Bastion workstation
-curl https://public.dhe.ibm.com/ibmdl/export/pub/storage/ceph/ibm-storage-ceph-8-rhel-9.repo | sudo tee /etc/yum.repos.d/ibm-storage-ceph-8-rhel-9.repo
+curl https://public.dhe.ibm.com/ibmdl/export/pub/storage/ceph/ibm-storage-ceph-9-rhel-9.repo | sudo tee /etc/yum.repos.d/ibm-storage-ceph-9-rhel-9.repo
 dnf install ceph-common -y
 scp -pr ceph-node1:/etc/ceph/ /etc/
 sleep 90
