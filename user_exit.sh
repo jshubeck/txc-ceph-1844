@@ -18,7 +18,8 @@ scp ./purge_cluster.sh root@ceph-node1:/root/scripts.d
 scp ./new_cluster_deploy.sh root@ceph-node1:/root/scripts.d
 
 ## Install the NFS client
-dnf install -y nfs-utils
+## Not needed for lab 1844
+# dnf install -y nfs-utils
 
 ## Install AWS CLI client
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
@@ -84,7 +85,7 @@ HTML_FILE_PATH="$USER_HOME/cli-helper-1844.html"
 FILE_URL="file://$HTML_FILE_PATH"
 
 ## Specify the second URL to open in a new tab
-SECOND_URL="https://ceph-node1:8443"
+CEPH_URL="https://ceph-node1:8443"
 
 ## Backup the current prefs.js file
 cp "$PREFS_PATH" "$PREFS_PATH.bak"
@@ -99,14 +100,16 @@ fi
 
 pkill firefox
 ## Add the local file URL and the second URL to the startup pages (home pages) in user.js
-echo 'user_pref("browser.startup.homepage", "'$FILE_URL'|'$SECOND_URL'");' >> "$USER_JS_PATH"
-echo "Firefox will open with $FILE_URL and $SECOND_URL on startup."
+# echo 'user_pref("browser.startup.homepage", "'$FILE_URL'|'$SECOND_URL'");' >> "$USER_JS_PATH"
+echo 'user_pref("browser.startup.homepage", "'$CEPH_URL'|'$FILE_URL'");' >> "$USER_JS_PATH"
+echo "Firefox will open with $CEPH_URL and $FILE_URL on startup."
 
 ## Install rpcbind on every node - required for Ceph NFS service to start
-for SERVER in 1 2 3 4
-do
-ssh ceph-node${SERVER} "systemctl unmask rpcbind.socket ; systemctl unmask rpcbind.service ; systemctl enable --now rpcbind"
-done
+## For LAB-1844 we do not need this anymore
+# for SERVER in 1 2 3 4
+# do
+# ssh ceph-node${SERVER} "systemctl unmask rpcbind.socket ; systemctl unmask rpcbind.service ; systemctl enable --now rpcbind"
+# done
 
 ## Copy Ceph admin keys to the Bastion workstation
 curl https://public.dhe.ibm.com/ibmdl/export/pub/storage/ceph/ibm-storage-ceph-9-rhel-9.repo | sudo tee /etc/yum.repos.d/ibm-storage-ceph-9-rhel-9.repo
@@ -115,4 +118,10 @@ scp -pr ceph-node1:/etc/ceph/ /etc/
 sleep 90
 ceph config-key get mgr/cephadm/registry_credentials | jq . > /root/scripts.d/registry.json
 scp /root/scripts.d/registry.json root@ceph-node1:/root/scripts.d
+
+## Get the lab seat startup files
+cp ./lab-start-1844.sh $USER_HOME/lab-start-1844.sh
+chmod 755 lab-start-1844.sh
+sleep 90
 exit 0
+

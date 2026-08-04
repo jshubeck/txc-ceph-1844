@@ -11,8 +11,8 @@ acl=private > /dev/null 2>&1
 
 echo "Copying lab files from IBM Cloud to the local workstation . .  ."
 #rclone copy ibmcloud:txc-lab1844-files/Pictures --include "IMG*" Pictures -q
-rclone copy ibmcloud:txc-lab1844-objects/Pictures  Pictures -q
-rclone copy ibmcloud:txc-lab1844-objects/Documents Documents -q
+rclone copy ibmcloud:txc-lab1844-files/Pictures  Pictures -q
+rclone copy ibmcloud:txc-lab1844-files/Documents Documents -q
 
 echo "Creating binary test files in the 'Binaries' directory now . . ."
 mkdir -p Binaries
