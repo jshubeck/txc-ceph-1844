@@ -19,3 +19,22 @@ for i in {1..5};
 do
 	dd if=/dev/random of=Binaries/${i}MB-file.bin bs=1M count=$i status=none
 done
+
+#
+# USE THIS ONE!!!
+#
+for i in {2..4}; do
+echo ceph orch host add `grep node${i} /etc/hosts | awk '$2 ~ /^ceph-node/ {print $2, $1}'`
+done
+
+#
+# ADD THE OSDS
+#
+cephadm shell -- ceph orch apply osd --all-available-devices
+
+#
+# START THE RGW SERVICE
+#
+ceph orch host label add `grep node3 /etc/hosts | awk '$2 ~ /^ceph-node/ {print $2}'` rgw
+ceph orch apply rgw s3service --placement "label:rgw"
+
