@@ -1,7 +1,18 @@
 #!/bin/bash
 
+# Expand the cluster
+echo "Expanding the Ceph cluster from one (1) to four (4) nodes . . . "
+for i in {2..4}; do
+ssh -q ceph-node1 sudo ceph orch host add `grep node${i} /etc/hosts | awk '$2 ~ /^ceph-node/ {print $2, $1}'`
+done
 
-echo "Creating RCLONE configuration profile . . ."
+# Label the RGW nodes
+echo "Labeling Ceph Node 3 and Node 4 for RGW services . . . "
+ssh -q ceph-node1 sudo ceph orch host label add `grep node3 /etc/hosts | awk '$2 ~ /^ceph-node/ {print $2}'` rgw
+ssh -q ceph-node1 sudo ceph orch host label add `grep node4 /etc/hosts | awk '$2 ~ /^ceph-node/ {print $2}'` rgw
+
+
+echo "Creating RCLONE configuration profile for IBM Cloud . . ."
 export AKEY=3275e5e91ce34e6db76c3e6b80615a44
 export SKEY=f4d6d85d1a5b8b259029b25bf7e5ca449f63deeaf885b997
 rclone config create ibmcloud s3 provider IBMCOS \
