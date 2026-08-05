@@ -10,7 +10,6 @@ access_key_id=$AKEY secret_access_key=$SKEY \
 acl=private > /dev/null 2>&1
 
 echo "Copying lab files from IBM Cloud to the local workstation . .  ."
-#rclone copy ibmcloud:txc-lab1844-files/Pictures --include "IMG*" Pictures -q
 rclone copy ibmcloud:txc-lab1844-files/Pictures  Pictures -q
 rclone copy ibmcloud:txc-lab1844-files/Documents Documents -q
 

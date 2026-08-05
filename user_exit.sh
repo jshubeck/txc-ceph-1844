@@ -7,14 +7,10 @@ cp ./cli-helper-2622.adoc $USER_HOME/cli-helper-2622.adoc
 cp ./cli-helper-2622.html $USER_HOME/cli-helper-2622.html
 mkdir /root/scripts.d
 cp ./deploy_cluster.sh /root/scripts.d
-cp ./break_and_fix1.yaml /root/scripts.d
-cp ./break_and_fix2.yaml /root/scripts.d
-cp ./cotton.jpg /root/cotton.jpg
 chmod 644 /root/cotton.jpg
 chown $USER $USER_HOME/cli-helper-2622*
 chmod 644 $USER_HOME/cli-helper-2622*
 ssh ceph-node1 "mkdir /root/scripts.d"
-scp ./purge_cluster.sh root@ceph-node1:/root/scripts.d
 scp ./new_cluster_deploy.sh root@ceph-node1:/root/scripts.d
 
 ## Install the NFS client
