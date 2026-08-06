@@ -5,8 +5,8 @@
       "Status": "Enabled",
       "Filter": {
           "Prefix": "IMG",
-          "ObjectSizeGreaterThan": 2097152,
-          "ObjectSizeLessThan": 4194304
+          "ObjectSizeGreaterThan": 1048576,
+          "ObjectSizeLessThan": 3145728
         },
       "Transitions": [
         {

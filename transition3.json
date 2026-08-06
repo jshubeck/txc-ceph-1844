@@ -5,8 +5,8 @@
       "Status": "Enabled",
       "Filter": {
           "Prefix": "IMG",
-          "ObjectSizeGreaterThan": 2097152,
-          "ObjectSizeLessThan": 4194304
+          "ObjectSizeGreaterThan": 1048576,
+          "ObjectSizeLessThan": 3145728
         },
       "Transitions": [
         {
@@ -14,6 +14,33 @@
           "StorageClass": "STANDARD_IA"
         }
       ]
-    }
+    },
+    {
+      "ID": "CloudTransitionRule",
+      "Status": "Enabled",
+      "Filter": {
+        "ObjectSizeGreaterThan": 3145728,
+        "ObjectSizeLessThan": 5242880
+      },
+      "Transitions": [
+        {
+          "Days": 3,
+          "StorageClass": "CLOUD"
+        }
+      ]
+    },
+    {
+      "ID": "CloudTransitionRule",
+      "Status": "Enabled",
+      "Filter": {
+        "ObjectSizeGreaterThan": 52428800
+      },
+      "Transitions": [
+        {
+          "Days": 4,
+          "StorageClass": "GLACIER"
+        }
+      ]
+    }  
   ]
 }
