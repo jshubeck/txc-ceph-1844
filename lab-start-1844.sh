@@ -18,7 +18,7 @@ ssh -q ceph-node1 sudo ceph orch apply osd --all-available-devices
 # Launch the RGW services
 echo "Starting the RADOS Gateway (RGW) daemon on Node 3 and Node 4 . . . "
 sleep 20
-ssh -q ceph-node1 sudo ceph orch apply rgw-s3service --placement "label:rgw"
+ssh -q ceph-node1 sudo ceph orch apply rgw s3service --placement "label:rgw"
 
 # Creating RCLONE configuration for IBM Cloud
 echo "Creating RCLONE configuration profile for IBM Cloud . . ."
