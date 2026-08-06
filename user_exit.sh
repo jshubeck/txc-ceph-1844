@@ -7,7 +7,6 @@ cp ./cli-helper-2622.adoc $USER_HOME/cli-helper-2622.adoc
 cp ./cli-helper-2622.html $USER_HOME/cli-helper-2622.html
 mkdir /root/scripts.d
 cp ./deploy_cluster.sh /root/scripts.d
-chmod 644 /root/cotton.jpg
 chown $USER $USER_HOME/cli-helper-2622*
 chmod 644 $USER_HOME/cli-helper-2622*
 ssh ceph-node1 "mkdir /root/scripts.d"
@@ -117,7 +116,9 @@ scp /root/scripts.d/registry.json root@ceph-node1:/root/scripts.d
 
 ## Get the lab seat startup files
 cp ./lab-start-1844.sh $USER_HOME/lab-start-1844.sh
-chmod 755 lab-start-1844.sh
+chown $USER $USER_HOME/lab-start-1844.sh
+chown $USER $USER_HOME/lab-start-1844.sh
+chmod 755 chown $USER_HOME/lab-start-1844.sh
 sleep 90
 exit 0
 
