@@ -1,0 +1,19 @@
+{
+  "Rules": [
+    {
+      "ID": "TieringRule",
+      "Status": "Enabled",
+      "Filter": {
+          "Prefix": "IMG",
+          "ObjectSizeGreaterThan": 2097152,
+          "ObjectSizeLessThan": 4194304
+        },
+      "Transitions": [
+        {
+          "Days": 2,
+          "StorageClass": "STANDARD_IA"
+        }
+      ]
+    }
+  ]
+}
