@@ -44,7 +44,7 @@ rclone copy ibmcloud:txc-lab1844-files/Documents Documents -q
 
 echo "Creating binary test files in the 'Binaries' directory now . . ."
 mkdir -p Binaries
-for i in {1..5}; 
+for i in {1..6}; 
 do
 	dd if=/dev/random of=Binaries/${i}MB-file.bin bs=1M count=$i status=none
 done

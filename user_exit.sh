@@ -117,7 +117,7 @@ scp /root/scripts.d/registry.json root@ceph-node1:/root/scripts.d
 ## Get the lab seat startup files
 cp ./lab-start-1844.sh $USER_HOME/lab-start-1844.sh
 chown $USER $USER_HOME/lab-start-1844.sh
-ghgrp $USER $USER_HOME/lab-start-1844.sh
+chgrp $USER $USER_HOME/lab-start-1844.sh
 chmod 755 chown $USER_HOME/lab-start-1844.sh
 sleep 90
 exit 0
