@@ -23,9 +23,7 @@ sudo ./aws/install
 chmod -R 755 /usr/local/aws-cli
 
 # Install the MinIO (MC) client
-curl https://dl.min.io/client/mc/release/linux-amd64/mc \
---create-dirs -o $HOME/minio-binaries/mc
-# chmod 755 $HOME/minio-binaries/mc
+wget -P $HOME/minio-binaries https://dl.min.io/client/mc/release/linux-amd64/mc
 cp $HOME/minio-binaries/mc /usr/local/bin
 chmod 755 /usr/local/bin/mc
 
