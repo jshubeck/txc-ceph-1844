@@ -97,13 +97,6 @@ pkill firefox
 echo 'user_pref("browser.startup.homepage", "'$CEPH_URL'|'$FILE_URL'");' >> "$USER_JS_PATH"
 echo "Firefox will open with $CEPH_URL and $FILE_URL on startup."
 
-## Install rpcbind on every node - required for Ceph NFS service to start
-## For LAB-1844 we do not need this anymore
-# for SERVER in 1 2 3 4
-# do
-# ssh ceph-node${SERVER} "systemctl unmask rpcbind.socket ; systemctl unmask rpcbind.service ; systemctl enable --now rpcbind"
-# done
-
 ## Copy Ceph admin keys to the Bastion workstation
 curl https://public.dhe.ibm.com/ibmdl/export/pub/storage/ceph/ibm-storage-ceph-9-rhel-9.repo | sudo tee /etc/yum.repos.d/ibm-storage-ceph-9-rhel-9.repo
 dnf install ceph-common -y
