@@ -14,7 +14,7 @@ ssh -q ceph-node1 sudo ceph orch host label add `grep node3 /etc/hosts | awk '$2
 ssh -q ceph-node1 sudo ceph orch host label add `grep node4 /etc/hosts | awk '$2 ~ /^ceph-node/ {print $2}'` rgw
 
 # Add the OSDs
-echo "Expanding the clsuter capacity with OSD devices . . . "
+echo "Expanding the cluster capacity with OSD devices . . . "
 ssh -q ceph-node1 sudo ceph orch apply osd --all-available-devices
 
 # Launch the RGW services
