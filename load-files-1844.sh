@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "Starting load-files-1844.sh now . . ."
 # Creating RCLONE configuration for IBM Cloud
 echo "Creating RCLONE configuration profile for IBM Cloud . . ."
 export AKEY=3275e5e91ce34e6db76c3e6b80615a44
