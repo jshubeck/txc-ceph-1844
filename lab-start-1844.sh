@@ -23,4 +23,4 @@ sleep 30
 echo "Starting the RADOS Gateway (RGW) daemon on Node 3 and Node 4 . . . "
 ssh -q ceph-node1 sudo ceph orch apply rgw s3service --placement "label:rgw"
 
-echo "Done."
+echo "Done."echo "Done."
