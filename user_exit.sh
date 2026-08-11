@@ -1,14 +1,17 @@
 #!/bin/bash
 
-## Get the helper file for Bastion workstation
+## Get the lab helper files for Bastion workstation
 USER_HOME=$(cat /etc/passwd | grep ^U | cut -d: -f6)
 USER=$(cat /etc/passwd | grep ^U | cut -d: -f1)
-cp ./cli-helper-2622.adoc $USER_HOME/cli-helper-2622.adoc
-cp ./cli-helper-2622.html $USER_HOME/cli-helper-2622.html
+cp ./cli-helper-1844.adoc $USER_HOME/cli-helper-1844.adoc
+cp ./cli-helper-1844.html $USER_HOME/cli-helper-1844.html
+cp ./transition1.json $USER_HOME/transition1.json
+cp ./transition2.json $USER_HOME/transition2.json
+cp ./transition3.json $USER_HOME/transition3.json
 mkdir /root/scripts.d
 cp ./deploy_cluster.sh /root/scripts.d
-chown $USER $USER_HOME/cli-helper-2622*
-chmod 644 $USER_HOME/cli-helper-2622*
+chown $USER $USER_HOME/cli-helper-1844*
+chmod 644 $USER_HOME/cli-helper-1844*
 ssh ceph-node1 "mkdir /root/scripts.d"
 scp ./new_cluster_deploy.sh root@ceph-node1:/root/scripts.d
 
