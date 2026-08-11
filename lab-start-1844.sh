@@ -16,6 +16,12 @@ ssh -q ceph-node1 sudo ceph orch host label add `grep node4 /etc/hosts | awk '$2
 # Add the OSDs
 echo "Expanding the cluster capacity with OSD devices . . . "
 ssh -q ceph-node1 sudo ceph orch apply osd --all-available-devices
+until ssh -q ceph-node1 sudo ceph osd stat -f json | jq -e '.num_up_osds == 16 and .num_in_osds == 16' > /dev/null; do
+  echo "Waiting for 16 OSDs to be up and in..."
+  sleep 15
+  ssh -q ceph-node1 sudo ceph osd stat
+done
+echo "All 16 OSDs are up and in."
 
 # Launch the RGW services
 echo "Waiting 30 seconds for OSDs to start . . ."
