@@ -23,6 +23,10 @@ until ssh -q ceph-node1 sudo ceph osd stat -f json | jq -e '.num_up_osds == 16 a
 done
 echo "All 16 OSDs are up and in."
 
+# Setting placement for three Ceph MON daemons
+# echo "Setting the Ceph MON daemon count to 3 . . ."
+ssh -q ceph-node1 sudo ceph orch apply MON --placement "3"
+
 # Launch the RGW services
 echo "Waiting 30 seconds for OSDs to start . . ."
 sleep 30
