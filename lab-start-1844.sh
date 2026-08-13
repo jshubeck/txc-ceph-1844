@@ -25,7 +25,7 @@ echo "All 16 OSDs are up and in."
 
 # Setting placement for three Ceph MON daemons
 # echo "Setting the Ceph MON daemon count to 3 . . ."
-ssh -q ceph-node1 sudo ceph orch apply MON --placement "3"
+ssh -q ceph-node1 sudo ceph orch apply mon --placement "3"
 
 # Launch the RGW services
 echo "Waiting 30 seconds for OSDs to start . . ."
