@@ -10,7 +10,7 @@ endpoint=s3.us.cloud-object-storage.appdomain.cloud \
 access_key_id=$AKEY secret_access_key=$SKEY \
 acl=private > /dev/null 2>&1
 
-# Creating RCLONE configuration for IBM Deep Archivejjjj
+# Creating RCLONE configuration for IBM Deep Archive
 echo "Creating RCLONE configuration profile for IBM Deep Archive . . ."
 export AKEY=WbOcezFXRZBzwCtFPwX4
 export SKEY=Xsyj2IhXQIi6H7UtqODgNzSCKXxt8J8YPXrnKUB1
@@ -29,5 +29,5 @@ for i in {1..6};
 do
 	dd if=/dev/random of=Binaries/${i}MB-file.bin bs=1M count=$i status=none
 done
-
+cd ..
 echo "Done."
