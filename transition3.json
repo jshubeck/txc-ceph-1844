@@ -33,7 +33,7 @@
       "ID": "TapeTransitionRule",
       "Status": "Enabled",
       "Filter": {
-        "ObjectSizeGreaterThan": 52428800
+        "ObjectSizeGreaterThan": 5242880
       },
       "Transitions": [
         {
