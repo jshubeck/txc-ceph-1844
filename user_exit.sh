@@ -27,6 +27,7 @@ chmod -R 755 /usr/local/aws-cli
 
 # Install the MinIO (MC) client
 wget -P $HOME/minio-binaries https://dl.min.io/client/mc/release/linux-amd64/mc
+sleep 10
 cp $HOME/minio-binaries/mc /usr/local/bin
 chmod 755 /usr/local/bin/mc
 

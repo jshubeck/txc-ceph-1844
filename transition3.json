@@ -19,7 +19,7 @@
       "ID": "CloudTransitionRule",
       "Status": "Enabled",
       "Filter": {
-        "ObjectSizeGreaterThan": 3145728,
+        "ObjectSizeGreaterThan": 3145727,
         "ObjectSizeLessThan": 5242880
       },
       "Transitions": [
@@ -33,7 +33,7 @@
       "ID": "TapeTransitionRule",
       "Status": "Enabled",
       "Filter": {
-        "ObjectSizeGreaterThan": 5242880
+        "ObjectSizeGreaterThan": 5242879
       },
       "Transitions": [
         {

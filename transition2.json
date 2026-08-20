@@ -19,7 +19,7 @@
       "ID": "CloudTransitionRule",
       "Status": "Enabled",
       "Filter": {
-        "ObjectSizeGreaterThan": 3145728,
+        "ObjectSizeGreaterThan": 3145727,
         "ObjectSizeLessThan": 5242880
       },
       "Transitions": [
